@@ -1,0 +1,177 @@
+import pyglet
+from threading import Thread
+from time import sleep
+import random
+import time
+def pr(files):
+    media = pyglet.media.load('1.mp3')
+    media.play()
+    pyglet.app.event_loop.sleep(6)
+def proig():
+    print("Вы проиграли!")
+    player = Thread(target=pr, args=('1.mp3',))
+    player.start()
+def w(files):
+    media = pyglet.media.load('4.mp3')
+    media.play()
+    pyglet.app.event_loop.sleep(5)
+def win():
+    player = Thread(target=w, args=("4.mp3",))
+    player.start()
+    print("Вы выиграли!")
+def ne(files):
+    media = pyglet.media.load('2.mp3')
+    media.play()
+    pyglet.app.event_loop.sleep(2)
+def neprav():
+    player = Thread(target=ne, args=('2.mp3',))
+    player.start()
+    print("Неправильно. -1 жизнь")
+def p(files):
+    media = pyglet.media.load('3.mp3')
+    media.play()
+    pyglet.app.event_loop.sleep(5)
+def prav():
+    print("Правильно. +1 очко")
+    player = Thread(target=p, args=('3.mp3',))
+    player.start()
+
+while True:
+    score = 0
+    nachalo = str(input("Добро пожаловать в игру 'Пила'. Хотите сыграть в игру?"))
+    listda = ["да", "ДА", "дА", "Да"]
+    if nachalo in listda:
+        print("Ну что-ж...Поехали!")
+    else:
+        proig()
+        continue
+    slozn = int(input("Выберите сложность от 1 до 3(3-самый сложный)"))
+    if slozn == 1:
+        popitki = 3
+    elif slozn == 2:
+        popitki = 2
+    elif slozn == 3:
+        popitki = 1
+    print("Количество Ваших попыток= " + str(popitki))
+    otv1 = int(input("1)Год развала СССР?(назовите в формате '2021')"))
+    if otv1 == 1991:
+        score = score + 1
+        prav()
+        if popitki >= 0 and score >= 5:
+            time.sleep(3)
+            win()
+            continue
+    else:
+        popitki = popitki - 1
+        neprav()
+        if popitki == 0 and score < 5:
+            time.sleep(3)
+            proig()
+            continue
+    otv2 = str(input("2)Назовите столицу России"))
+    listotv2 = ["Москва", "москва", "мОСКВА", "МОСКВА"]
+    if otv2 in listotv2:
+        score = score + 1
+        prav()
+        if popitki >= 0 and score >= 5:
+            time.sleep(3)
+            win()
+            continue
+    else:
+        popitki = popitki - 1
+        neprav()
+        if popitki == 0 and score < 5:
+            time.sleep(3)
+            proig()
+            continue
+    otv3 = str(input("3)Python был разработан Гвидо ван Руссумом?"))
+    if otv3 in listda:
+        score = score + 1
+        prav()
+        if popitki >= 0 and score >= 5:
+            time.sleep(3)
+            win()
+            continue
+    else:
+        popitki = popitki - 1
+        neprav()
+        if popitki == 0 and score < 5:
+            time.sleep(3)
+            proig()
+            continue
+    otv4 = str(input("4)Facebook придумал Марк Цукерберг?"))
+    if otv4 in listda:
+        score = score + 1
+        prav()
+        if popitki >= 0 and score >= 5:
+            time.sleep(3)
+            win()
+            continue
+    else:
+        popitki = popitki - 1
+        neprav()
+        if popitki == 0 and score < 5:
+            time.sleep(3)
+            proig()
+            continue
+    otv5 = int(input("5)В каком году на свет появилась 'Пила'(ответ в формате '2021')"))
+    if otv5 == 2003:
+        score = score + 1
+        prav()
+        if popitki >= 0 and score >= 5:
+            time.sleep(3)
+            win()
+            continue
+    else:
+        popitki = popitki - 1
+        neprav()
+        if popitki == 0 and score < 5:
+            time.sleep(3)
+            proig()
+            continue
+    otv6 = str(input("6)Телефон изобрёл Александер Грэм Белл?"))
+    if otv6 in listda:
+        score = score + 1
+        prav()
+        if popitki >= 0 and score >= 5:
+            time.sleep(3)
+            win()
+            continue
+    else:
+        popitki = popitki - 1
+        neprav()
+        if popitki == 0 and score < 5:
+            time.sleep(3)
+            proig()
+            continue
+    otv7 = int(input("7)в каком году началась Северная война(ответ в формате '2021')"))
+    if otv7 == 1700:
+        score = score + 1
+        prav()
+        if popitki >= 0 and score >= 5:
+            time.sleep(3)
+            win()
+            continue
+    else:
+        popitki = popitki - 1
+        neprav()
+        if popitki == 0 and score < 5:
+            time.sleep(3)
+            proig()
+            continue
+    r = random.randint(1, 10)
+    otv8 = int(input("8)Я загад число от 1 до 10, какое это число?"))
+    if otv8 == r:
+        score = score + 1
+        prav()
+        if popitki >= 0 and score >= 5:
+            time.sleep(3)
+            win()
+            continue
+    else:
+        popitki = popitki - 1
+        neprav()
+        if popitki == 0 and score < 5:
+            time.sleep(3)
+            proig()
+            continue
